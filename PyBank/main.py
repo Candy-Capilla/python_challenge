@@ -42,3 +42,21 @@ greatest_decrease = min(change)
 print(f"Greatest Increase: {months[change.index(max(change)) + 1]} (${(str(greatest_increase))})")
 print(f"Greatest Decrease: {months[change.index(min(change)) + 1]} (${(str(greatest_decrease))})")
 
+# location of open output files
+output_file = os.path.join("Analysis", "Financial_Analysis_Summary.txt")
+with open(output_file,"w") as file:
+
+# Write output file
+    file.write("Financial Analysis")
+    file.write("\n")
+    file.write("----------------------------")
+    file.write("\n")
+    file.write(f"Total Months: {total_months}")
+    file.write("\n")
+    file.write(f"Total: ${net_total}")
+    file.write("\n")
+    file.write(f"Average Change: {round(average_change,2)}")
+    file.write("\n")
+    file.write(f"Greatest Increase in Profits: {months[change.index(max(change)) + 1]} (${(str(greatest_increase))})")
+    file.write("\n")
+    file.write(f"Greatest Decrease in Profits: {months[change.index(min(change)) + 1]} (${(str(greatest_decrease))})")
