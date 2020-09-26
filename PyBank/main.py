@@ -10,10 +10,10 @@ net_total = 0
 months = []
 change = []
 profit_loss = []
-
+#Print info
 print(f"Financial Analysis")
 print(f"--------------------------")
-
+#Sum total months and net total, add to months and proft loss list
 with open(budgetcsvpath) as csvfile:
    csvreader = csv.reader(csvfile, delimiter=",")
    next(csvreader, None)   
@@ -26,27 +26,27 @@ with open(budgetcsvpath) as csvfile:
    print(f"Total Months: {total_months}") 
 
    print(f"Total: $ {net_total}")
-
+#create list of change in profit/loss
    for i in range(1,len(profit_loss)):
         change.append((int(profit_loss[i]) - int(profit_loss[i-1])))
-
+#Calculate average change
    average_change = sum(change)/ len(change)
-
+#Print info
    print(f"Average Change: {round(average_change,2)}")
 
-
+#Calculate greatest increase and decrease
 greatest_increase = max(change)
 greatest_decrease = min(change)
 
-
+#Print info
 print(f"Greatest Increase: {months[change.index(max(change)) + 1]} (${(str(greatest_increase))})")
 print(f"Greatest Decrease: {months[change.index(min(change)) + 1]} (${(str(greatest_decrease))})")
 
-# location of open output files
+#location of open output files
 output_file = os.path.join("Analysis", "Financial_Analysis_Summary.txt")
 with open(output_file,"w") as file:
 
-# Write output file
+#Write output file
     file.write("Financial Analysis")
     file.write("\n")
     file.write("----------------------------")
